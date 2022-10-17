@@ -1,0 +1,1 @@
+SELECT DISTINCT title, name FROM film JOIN language ON language.language_id = film.language_id WHERE description LIKE '%Drama%';

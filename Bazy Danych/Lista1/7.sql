@@ -1,0 +1,1 @@
+SELECT rating, count(*) FROM film GROUP BY rating;

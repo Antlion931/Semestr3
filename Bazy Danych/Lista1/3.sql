@@ -1,0 +1,1 @@
+SELECT DISTINCT title FROM film WHERE rating = 'G' ORDER BY length ASC LIMIT 4;
