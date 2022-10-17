@@ -1,4 +1,4 @@
-package pt.training.maven.jee;
+package pt.training.maven.jee.ejb;
 
 import org.testng.annotations.Test;
 

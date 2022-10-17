@@ -11,17 +11,14 @@
    <packaging>war</packaging>
    <name>model</name>
    <version>1.0.0-SNAPSHOT</version>
-
+   
    <properties>
       <!--
          Explicitly declaring the source encoding eliminates the following message:
          [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
       -->
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <!--
-         To set the jboss.home environment variable the Maven way, set the jboss.home property in an active profile in
-         the Maven 2 settings.xml file
-      -->
+      <!-- To set the jboss.home environment variable the Maven way, set the jboss.home property in an active profile in the Maven 2 settings.xml file -->
       <jboss.home>${env.JBOSS_HOME}</jboss.home>
       <jboss.domain>default</jboss.domain>
       <!-- The version of Weld extensions in use -->
@@ -38,6 +35,15 @@
        </repository>
    </repositories>
 
+   <pluginRepositories>
+      <!-- GlassFish repository required for embedded-glassfish plugin -->
+      <pluginRepository>
+         <id>glassfish</id>
+         <name>GlassFish Maven 2 Repository</name>
+         <url>http://download.java.net/maven/glassfish</url>
+      </pluginRepository>
+   </pluginRepositories>
+
    <dependencyManagement>
       <dependencies>
          <!-- Import scope will provide versions for dependencies below. -->
@@ -50,6 +56,7 @@
          </dependency>
       </dependencies>
    </dependencyManagement>
+
    <dependencies>
       <!-- CDI (JSR-299) -->
       <dependency>
@@ -57,14 +64,7 @@
          <artifactId>cdi-api</artifactId>
          <scope>provided</scope>
       </dependency>
-      <!-- EJB -->
-      <dependency>
-         <groupId>org.jboss.ejb3</groupId>
-         <artifactId>jboss-ejb3-api</artifactId>
-         <scope>provided</scope>
-         <version>3.1.0</version>
-      </dependency>
-      <!-- Common annotations (e.g., @PostConstruct, @PreDestroy, @Generated, @Resource) -->
+      <!-- Common annotations (e.g., @PostConstruct, @PreDestroy, @Generated, @Resource)  -->
       <dependency>
          <groupId>javax.annotation</groupId>
          <artifactId>jsr250-api</artifactId>
@@ -78,23 +78,11 @@
       </dependency>
       <!-- Bean Validation Implementation -->
       <!-- Provides portable constraints such as @NotEmpty, @Email and @Url -->
-      <!-- Hibernate Validator is only the JSR-303 implementation at the moment, so we can assume it's provided -->
+      <!-- Hibernate Validator is the only JSR-303 implementation at the moment, so we can assume it's provided -->
       <dependency>
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-validator</artifactId>
          <version>4.0.0.GA</version>
-         <scope>provided</scope>
-      </dependency>
-      <!-- JSF -->
-      <dependency>
-         <groupId>javax.faces</groupId>
-         <artifactId>jsf-api</artifactId>
-         <scope>provided</scope>
-      </dependency>
-      <!-- JPA -->
-      <dependency>
-         <groupId>javax.persistence</groupId>
-         <artifactId>persistence-api</artifactId>
          <scope>provided</scope>
       </dependency>
 
@@ -121,17 +109,18 @@
             </exclusion>
          </exclusions>
       </dependency>
+
    </dependencies>
    <build>
       <finalName>${artifactId}</finalName>
       <plugins>
-         <!-- Compiler plugin enforces Java 1.6 compatiblity -->
+         <!-- Compiler plugin enforces Java 1.6 compatibility -->
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <configuration>
-               <source>1.6</source>
-               <target>1.6</target>
+               <source>1.7</source>
+               <target>1.7</target>
             </configuration>
          </plugin>
 
@@ -147,7 +136,7 @@
                -->
             </configuration>
          </plugin>
-
+         
          <!-- Configure the JBoss AS Maven deploy plugin -->
          <plugin>
             <groupId>org.codehaus.mojo</groupId>
@@ -158,6 +147,17 @@
                <fileNames>
                   <fileName>${project.build.directory}/${build.finalName}.war</fileName>
                </fileNames> 
+            </configuration>
+         </plugin>
+         <!-- Configure the Embedded GlassFish Maven plugin -->
+         <plugin>
+            <groupId>org.glassfish</groupId>
+            <artifactId>maven-embedded-glassfish-plugin</artifactId>
+            <version>3.0</version>
+            <configuration>
+               <app>${project.build.directory}/${build.finalName}.war</app>
+               <port>7070</port>
+               <containerType>web</containerType>
             </configuration>
          </plugin>
       </plugins>

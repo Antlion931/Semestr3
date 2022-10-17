@@ -1,4 +1,4 @@
-package pt.training.maven.jee;
+package pt.training.maven.jee.ejb;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;

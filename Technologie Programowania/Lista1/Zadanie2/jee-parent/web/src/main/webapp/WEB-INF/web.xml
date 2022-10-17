@@ -13,7 +13,7 @@
 
    <context-param>
       <param-name>org.apache.myfaces.annotation.SCAN_PACKAGES</param-name>
-      <param-value>pt.training.maven.jee</param-value>
+      <param-value>pt.training.maven.jee.web</param-value>
    </context-param>
 
    <!--
@@ -59,7 +59,7 @@
       <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
       <init-param>
          <param-name>com.sun.jersey.config.property.packages</param-name>
-         <param-value>pt.training.maven.jee</param-value>
+         <param-value>pt.training.maven.jee.web</param-value>
       </init-param>
       <load-on-startup>1</load-on-startup>
    </servlet>

@@ -1,4 +1,4 @@
-package pt.training.maven.jee;
+package pt.training.maven.jee.web;
 
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;

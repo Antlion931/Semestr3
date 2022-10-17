@@ -6,13 +6,12 @@ public final class App
 {
     public static void main( final String[] args )
     {
-        int amountOfSheeps = getIntFromUser( "How many sheeps you want me to count: " );
-        int delay = getIntFromUser( "How long you want me to wait between counts: " );
+        int amountOfSheeps = getIntFromUser( "How many sheeps you want me to count:  " );
+        int delay = getIntFromUser( "How long you want me to wait between counts:  " );
 
         Counter counter = new Counter( amountOfSheeps );
 
-        while( counter.areThereMoreSheeps() )
-        {
+        while(counter.areThereMoreSheeps()){
             try
             {
                 TimeUnit.SECONDS.sleep( delay );

@@ -1,4 +1,4 @@
-package pt.training.maven.jee;
+package pt.training.maven.jee.web;
 
 import static org.junit.Assert.*;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package pt.training.maven.jee;
+package pt.training.maven.jee.web;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public @Model class HelloWorld
 {
-   private final String text = "Hello World!";
+   private final String text = "Hello, World!";
 
    private String letters;
    

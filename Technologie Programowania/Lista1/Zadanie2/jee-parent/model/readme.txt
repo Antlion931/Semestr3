@@ -1,18 +1,17 @@
 
                                  model 
 
- Source archetype: weld-jsf-jee
+ Source archetype: weld-jsf-jee-minimal
 
  What is it?
  ===========
 
- This is your project! It's a sample, deployable Maven 2 project to help you
+ This is your project! It's a barebones, deployable Maven 2 project to help you
  get your foot in the door developing with Java EE 6. This project is setup to
- allow you to create a compliant Java EE 6 application using JSF 2.0, CDI 1.0,
- EJB 3.1 and JPA 2.0) that can run on a certified application server (Complete
- or Web Profile). It includes a persistence unit and some sample persistence
- and transaction code to help you get your feet wet with database access in
- enterprise Java. 
+ allow you to create a compliant Java EE 6 application using JSF 2.0, CDI 1.0
+ and EJB 3.1 that can run on a certified application server (Full or Web
+ Profile). A persistence unit configuration is absent from this project, but
+ you can easily add one.
 
  System requirements
  ===================
@@ -32,6 +31,17 @@
 
  Deploying the application
  =========================
+
+ You can deploy the application without moving any files around using the
+ embedded GlassFish application server.
+
+ To run the application using embedded GlassFish, execute this command:
+
+  mvn package embedded-glassfish:run
+
+ The application will be running at the following URL:
+ 
+  http://localhost:7070/model
 
  To deploy the application to JBoss AS (standalone), first make sure that the
  JBOSS_HOME environment variable points to a JBoss AS 6.0 installation.
@@ -66,35 +76,8 @@
 
   http://localhost:8080/model
 
- If you want to deploy to GlassFish (standalone), you first need to change
- the name of the DataSource used by the persistence unit! Open this file:
-
-  src/main/resources/META-INF/persistence.xml
-
- Change the value of <jta-data-source> to the following:
-
-  <jta-data-source>jdbc/__default</jta-data-source>
-
- This configuration uses the built-in default Derby DataSource in GlassFish.
- Optionally, you can use an alternative DataSource of your choice.
- 
- Now, execute the command:
-
-  mvn package
- 
- You can now deploy the target/model.war archive and launch the
- application the through GlassFish administration console.
-
- Alternatively, you can deploy the application without moving any files around
- using the embedded GlassFish application server.
-
- To run the application using embedded GlassFish, execute this command:
-
-  mvn package embedded-glassfish:run
-
- The application will be running at the following URL:
- 
-  http://localhost:7070/model
+ If you want to deploy to GlassFish (standalone), you can upload the
+ target/model.war archive using the web-based administration console.
 
  Importing the project into an IDE
  =================================

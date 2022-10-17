@@ -1,4 +1,4 @@
-package pt.training.maven.jee;
+package pt.training.maven.jee.web;
 
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
