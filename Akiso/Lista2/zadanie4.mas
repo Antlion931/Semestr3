@@ -1,0 +1,78 @@
+﻿                    LOAD        number
+                    JNS         tohex
+                    HALT
+                    
+str_ptr, 	HEX 5
+			DEC 0
+str,		DEC 0
+			DEC 0
+            DEC 0
+            DEC 0
+                    
+number,             DEC         223
+buffer, DEC 0
+
+tohex, Halt /w sume to tu jest tylko 0002 przez JNS 
+tohex2, Store buffer
+Clear
+Store div
+Load buffer
+Store mod
+
+check,	Load mod
+		Subt sixteen
+		Skipcond 000
+		Jump substract
+		Jump saveMod
+
+substract,	Store mod
+			Load div
+            Add one
+            Store div
+            Jump check
+            
+saveMod,	Load mod
+			Subt nine
+            Skipcond 000
+            Add asciiFromNineToA
+            Add nine
+            Add asciiZero
+            StoreI str_ptr
+            Load str_ptr
+            Add one
+            Store str_ptr
+            Load div
+            Skipcond 400
+            Jump tohex2
+            Jump read
+            
+read, 	Load str_ptr
+		Subt one
+        Store str_ptr
+        LoadI str_ptr
+        Skipcond 400
+        Jump show
+        Load str_ptr
+        Add one
+        Store str_ptr
+        JumpI tohex
+        
+show, 	Output
+		Jump read
+            
+            
+sixteen, DEC 16
+div, DEC 0
+mod, DEC 0
+one, DEC 1
+nine, DEC 9
+asciiZero, HEX 30
+asciiFromNineToA, DEC 7
+
+
+
+
+
+
+
+

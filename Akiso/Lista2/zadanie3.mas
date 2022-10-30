@@ -1,0 +1,31 @@
+﻿/ Prompt user to type in integers
+Clear
+Store div
+Input
+Store mod
+Input
+Store X
+
+
+check,	Load mod
+		Subt X
+		Skipcond 000
+		Jump substract
+		Jump endShow
+
+substract,	Store mod
+			Load div
+            Add one
+            Store div
+            Jump check
+            
+endShow,	Load div
+			Output
+            Load mod
+            Output
+            Halt
+
+X, DEC 0
+div, DEC 0
+mod, DEC 0
+one, DEC 1
