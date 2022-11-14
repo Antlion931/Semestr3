@@ -1,0 +1,11 @@
+upewnij się że program gdb jest zainstalowany
+gdb -p <pid>        gdzie <pid> to proces jaki na którym chcesz pracować
+p close(<i>)        gdzie <i> to numer jaki chcesz zmienić
+p creat(<new>, <mod>)  gdzie <new> to gdzie powinien być przekierowany a <mod> oznacza uprawnienia, zapisywane za pomocą 
+
+700    /* RWX mask for owner */
+400    /* R for owner */
+200    /* W for owner */
+100    /* X for owner */
+
+q       aby wyjść
