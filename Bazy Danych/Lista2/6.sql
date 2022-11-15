@@ -1,0 +1,9 @@
+DELIMITER $$
+CREATE TRIGGER  IF NOT EXISTS producentChecker BEFORE INSERT ON Aparat
+FOR EACH ROW
+BEGIN
+    IF 0 = (SELECT COUNT(*) FROM Producent WHERE ID = NEW.producent) THEN
+        INSERT INTO Producent (ID) VALUE(NEW.producent);
+    END IF;
+END$$
+DELIMITER ;
