@@ -2,5 +2,5 @@ CREATE DATABASE IF NOT EXISTS `db-aparaty`;
 CREATE USER IF NOT EXISTS `268511`@`localhost`;
 SET PASSWORD FOR `268511`@`localhost` = PASSWORD('albert511');
 USE `db-aparaty`;
-GRANT SELECT, INSERT, UPDATE ON *.* TO `268511`@`localhost`;
+GRANT SELECT, INSERT, UPDATE ON `db-aparaty`.* TO `268511`@`localhost`;
 FLUSH PRIVILEGES;

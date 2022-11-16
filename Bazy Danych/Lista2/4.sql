@@ -1,16 +1,20 @@
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS Generate()
 BEGIN
-    DECLARE oi int; 
-    DECLARE op int; 
-    SET oi = 1;
-    a: WHILE oi <= 10 DO
-        SET op = 1;
-        b: WHILE op <= 10 DO
-            INSERT INTO Aparat (model, producent, matryca, obiektyw, typ) VALUE (CONCAT('gen', oi, 'n', op), oi, 100, op, 'inny');
-            SET op = op + 1;
-        END WHILE b;
-        SET oi = oi + 1;
+    DECLARE i int; 
+    DECLARE p int;
+    DECLARE m int;
+    DECLARE o int;
+
+    SET i = 1;
+    a: WHILE i <= 100 DO
+
+        SELECT ID INTO p FROM Producent ORDER BY RAND() LIMIT 1;
+        SELECT ID INTO m FROM Matryca ORDER BY RAND() LIMIT 1;
+        SELECT ID INTO o FROM Obiektyw ORDER BY RAND() LIMIT 1;
+
+        INSERT INTO Aparat (model, producent, matryca, obiektyw, typ) VALUE (CONCAT('gen', i), p, m, o, 'inny');
+        SET i = i + 1;
     END WHILE a;
 
 END$$
