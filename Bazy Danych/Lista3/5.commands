@@ -1,0 +1,8 @@
+sudo mysqldump sekta > backup.sql;
+sudo mariadb;
+DROP DATABASE `sekta`;
+CREATE DATABASE IF NOT EXISTS `sekta`;
+exit;
+sudo mysql sekta < backup.sql;
+
+
